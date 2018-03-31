@@ -12,7 +12,7 @@ public class HRSystem {
 		
 		Staff admin = new Admin("Phil","e789789","password333","RMIT",222344,6);
 		
-		System.out.println(admin.getName());
+		System.out.println(approver.getName());
 		
 		
 	}
