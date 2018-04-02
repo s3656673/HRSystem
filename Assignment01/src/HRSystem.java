@@ -22,7 +22,6 @@ public class HRSystem {
 
 		// Authenticate to determine type of user (approver, admin,
 		// courseCoordinator..etc)
-		
 		do {
 			Login login = new Login(courseCoordinator, casualWorker, approver,admin);
 			typeOfStaff = login.getType();
@@ -33,9 +32,13 @@ public class HRSystem {
 		
 		System.out.println(typeOfStaff);
 	
+		
+		
 		if (typeOfStaff=="casualWorker")
 		{
+			
 			casualWorker.menu();
+			int option=((CasualWorker) casualWorker).getOption();
 		}
 			
 

@@ -2,6 +2,8 @@ import java.util.*;
 
 public class CasualWorker extends Staff {
 
+	public int option = 0;
+	
 	public CasualWorker(String name, String rmitID, String password, String school, int phone, int workingHours) {
 		super(name, rmitID, password, school, phone, workingHours);
 	}
@@ -11,12 +13,14 @@ public class CasualWorker extends Staff {
 	// State unavailable hours
 
 	public void menu() {
+		int option = this.option;
+		int availableHrs;
 		Scanner scan = new Scanner(System.in);
-		int option = 0;
+		
 		do {
 
 			System.out.println("Welcome casual worker!");
-			System.out.println("1. State unavailable hours");
+			System.out.println("1. State available hours");
 			System.out.println("2. See open hours");
 			System.out.println("3. Apply for a course");
 			System.out.println();
@@ -25,14 +29,25 @@ public class CasualWorker extends Staff {
 		} while (option < 0 || option >= 3);
 
 		if (option == 1)
-			System.out.println("State unavailable hours");
+		{
+			System.out.println("Please enter available hours: ");
+			this.option=1;
+		}
 
 		if (option == 2)
+			this.option=2;
 			System.out.println("See open hours");
 
 		if (option == 3)
+			this.option=2;
 			System.out.println("Apply for a course");
 
+	}
+	
+	public int getOption()
+	{
+		return this.option;
+		
 	}
 
 
