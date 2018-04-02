@@ -1,5 +1,5 @@
 
-public class Staff {
+public abstract class Staff {
 
 	private String name, rmitID, password, school;
 	private int phone;
@@ -39,5 +39,8 @@ public class Staff {
 	public int getWorkingHours() {
 		return this.workingHours;
 	}
+
+	public abstract void menu();
+
 
 }
