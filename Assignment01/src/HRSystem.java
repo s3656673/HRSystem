@@ -2,45 +2,7 @@ import java.util.*;
 
 public class HRSystem {
 
-	// Login method
-	public static String login(Staff courseCoordinator, Staff casualWorker, Staff approver, Staff admin) {
 
-		Scanner scan = new Scanner(System.in);
-		String username;
-		String password;
-		System.out.print("Please enter username: ");
-		username = scan.next();
-		System.out.print("Please enter password: ");
-		password = scan.next();
-
-		// Check login
-		if (username.equals(courseCoordinator.getRmitID())) {
-			if (password.equals(courseCoordinator.getPassword()))
-				System.out.println("Login success");
-			return "courseCoordinator";
-		}
-
-		if (username.equals(casualWorker.getRmitID())) {
-			if (password.equals(casualWorker.getPassword()))
-				System.out.println("Login success");
-			return "casualWorker";
-		}
-
-		if (username.equals(approver.getRmitID())) {
-			if (password.equals(approver.getPassword()))
-				System.out.println("Login success");
-			return "approver";
-		}
-
-		if (username.equals(admin.getRmitID())) {
-			if (password.equals(admin.getPassword()))
-				System.out.println("Login success");
-			return "admin";
-		}
-
-		return "fail";
-
-	}
 
 	public static void main(String[] args) {
 
@@ -60,13 +22,15 @@ public class HRSystem {
 
 		// Authenticate to determine type of user (approver, admin,
 		// courseCoordinator..etc)
+		
 		do {
-			typeOfStaff = (login(courseCoordinator, casualWorker, approver, admin));
+			Login login = new Login(courseCoordinator, casualWorker, approver,admin);
+			typeOfStaff = login.getType();
 			if (typeOfStaff == "fail")
 				System.out.println("Login failed, please try again");
 			System.out.println();
 		} while (typeOfStaff == "fail");
-
+		
 		System.out.println(typeOfStaff);
 	
 		if (typeOfStaff=="casualWorker")
