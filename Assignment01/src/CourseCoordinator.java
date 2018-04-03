@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class CourseCoordinator extends Staff {
 
@@ -23,6 +24,35 @@ public class CourseCoordinator extends Staff {
 
 	public String getCourse() {
 		return this.course;
+	}
+
+	public int option = 0;
+	@Override
+	public void menu() {
+		int availableHrs;
+		Scanner scan = new Scanner(System.in);
+		
+		do {
+
+			System.out.println("Welcome course coordinator!");
+			System.out.println("1. Assign casual staff");
+			System.out.println("2. Input Rates");
+			System.out.println();
+			System.out.println("Please select an option: ");
+			option = scan.nextInt();
+		} while (option < 0 || option >= 3);
+
+		if (option == 1)
+		{
+			System.out.println("Enter staff to associate: ");
+			this.option=1;
+		}
+
+		if (option == 2)
+			this.option=2;
+			System.out.println("Input rates: ");
+
+
 	}
 
 }

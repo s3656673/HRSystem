@@ -30,7 +30,6 @@ public class HRSystem {
 			System.out.println();
 		} while (typeOfStaff == "fail");
 		
-		System.out.println(typeOfStaff);
 	
 		
 		
@@ -38,10 +37,25 @@ public class HRSystem {
 		{
 			
 			casualWorker.menu();
-			int option=((CasualWorker) casualWorker).getOption();
 		}
 			
-
+		if (typeOfStaff=="admin")
+		{
+			
+			admin.menu();
+		}
+		
+		if (typeOfStaff=="approver")
+		{
+			
+			approver.menu();
+		}
+		
+		if (typeOfStaff=="courseCoordinator")
+		{
+			
+			courseCoordinator.menu();
+		}
 	}
 
 }

@@ -11,7 +11,7 @@ public class CasualWorker extends Staff {
 	// Declare variables
 
 	// State unavailable hours
-
+	@Override
 	public void menu() {
 		int option = this.option;
 		int availableHrs;
