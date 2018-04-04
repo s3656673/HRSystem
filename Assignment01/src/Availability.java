@@ -16,4 +16,14 @@ public class Availability {
 	public String getCurrentShifts() {
 		return this.currentShifts;
 	}
+
+	public void setAvailableTime(String availableTime) {
+		this.availableTime = availableTime;
+	}
+
+	public void setCurrentShifts(String currentShifts) {
+		this.currentShifts = currentShifts;
+	}
+	
+	
 }
