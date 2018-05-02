@@ -9,7 +9,6 @@ public class HRSystem {
 		String typeOfStaff;
 
 		// Declare types
-		Course course = new Course("SEF", "COSC1111", "Software Engineer", "1/02/2018", 2);
 
 		Staff courseCoordinator = new CourseCoordinator("Bill", "e523523", "password123", "RMIT", 441222212, 2,
 				"Departmental", "Course");

@@ -6,6 +6,7 @@ public abstract class Staff {
 	private int workingHours;
 
 
+	
 	public Staff(String name, String rmitID, String password, String school, int phone, int workingHours) {
 		this.name = name;
 		this.rmitID = rmitID;

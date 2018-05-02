@@ -29,7 +29,8 @@ public class CreateCourse {
 		System.out.print("Enter number of students for course: ");
 		noOfStudents = scan.nextInt();
 
-		course = new Course(courseName, courseID, courseDescription, courseDate, noOfStudents);
+		course = new Course(courseName, courseID, courseDescription, noOfStudents);
+		course.createCourse();
 		System.out.println();
 		System.out.println("Course successfully created.");
 

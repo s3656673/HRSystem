@@ -1,3 +1,7 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class CourseCoordinator extends Staff {
@@ -61,6 +65,12 @@ public class CourseCoordinator extends Staff {
 			CreateCourse createCourse = new CreateCourse();
 			createCourse.createCourse();
 			createCourse.defineTimetable();
+			DatabaseHandler db = new DatabaseHandler();
+			
+			
+			
+			
+			
 		}
 
 	}
