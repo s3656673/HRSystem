@@ -29,7 +29,7 @@ public class CourseCoordinator extends Staff {
 	public int option = 0;
 	@Override
 	public void menu() {
-		int availableHrss;
+		int availableHrs;
 		Scanner scan = new Scanner(System.in);
 		
 		do {
