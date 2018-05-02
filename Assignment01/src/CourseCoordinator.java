@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class CourseCoordinator extends Staff {
 
-	private Scanner scan = new Scanner(System.in);
+
 	private String school, department, course;
 	
 
@@ -34,6 +34,7 @@ public class CourseCoordinator extends Staff {
 
 	@Override
 	public void menu() {
+		Scanner scan = new Scanner(System.in);
 		int availableHrs;
 		scan = new Scanner(System.in);
 
