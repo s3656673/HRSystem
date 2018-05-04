@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Login {
 	private String typeOfStaff = "fail";
-	private String name, lastname, rmitID, password, school, phone, course;
+	private String name, firstName, lastName, rmitID, password, school, phone, workingHours;
 	DatabaseHandler db = new DatabaseHandler();
 
 	public Login() {
@@ -26,12 +26,13 @@ public class Login {
 			if (rs.next()) {
 				System.out.println("Login successful");
 				this.typeOfStaff = rs.getString("Type");
-				this.name = rs.getString("FirstName");
+				this.firstName = rs.getString("FirstName");
+				this.lastName = rs.getString("LastName");
 				this.rmitID = rs.getString("rmitID");
 				this.password = rs.getString("Password");
 				this.school = rs.getString("School");
 				this.phone = rs.getString("Phone");
-				this.course = rs.getString("Course");
+				this.workingHours = rs.getString("WorkingHours");
 			}
 
 		} catch (SQLException e) {
@@ -48,8 +49,12 @@ public class Login {
 		return typeOfStaff;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
 	}
 
 	public String getRmitID() {
@@ -68,8 +73,8 @@ public class Login {
 		return phone;
 	}
 
-	public String getCourse() {
-		return course;
+	public String getWorkingHours() {
+		return workingHours;
 	}
 
 }

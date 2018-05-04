@@ -5,13 +5,14 @@ public class HRSystem {
 	public static void main(String[] args) {
 
 		String typeOfStaff = "fail";
-		String name = null;
+		String firstName = null;
+		String lastName = null;
 		String rmitID = null;
 		String password = null;
 		String school = null;
 		String phone = null;
 		int phNum = 0;
-		String course = null;
+		String workingHours = null;
 
 		// Declare types
 		/*
@@ -41,19 +42,28 @@ public class HRSystem {
 			if (typeOfStaff == "fail")
 				System.out.println("Login failed, please try again" + "\n");
 			else {
-				name = login.getName();
+				firstName = login.getFirstName();
+				lastName = login.getLastName();
 				rmitID = login.getRmitID();
 				password = login.getPassword();
 				school = login.getSchool();
 				phone = login.getPhone();
-				phNum = Integer.parseInt(phone);
-				course = login.getCourse();
+				workingHours = login.getWorkingHours();
 			}
 		} while (typeOfStaff == "fail");
 
 		if (typeOfStaff.equals("courseCoordinator")) {
-			Staff courseCoordinator = new CourseCoordinator(name, rmitID, password, school, phNum, 0, course, course);
-			courseCoordinator.menu();
+			Staff courseCoordinator = new CourseCoordinator(rmitID, typeOfStaff,firstName,lastName,password,school,phone,workingHours);
+			
+			System.out.println(rmitID);
+			System.out.println(typeOfStaff);
+			System.out.println(firstName);
+			System.out.println(lastName);
+			System.out.println(password);
+			System.out.println(school);
+			System.out.println(phone);
+			System.out.println(workingHours);
+			
 		}
 
 		/*

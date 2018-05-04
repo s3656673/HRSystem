@@ -14,13 +14,12 @@ public class CourseCoordinator extends Staff {
 	// Private assignShift()??
 	// String name, String rmitID, String password, String school, int phone, int
 	// workingHours
-	public CourseCoordinator(String name, String rmitID, String password, String school, int phone, int workingHours,
-			String department, String course) {
-		super(name, rmitID, password, school, phone, workingHours);
-		this.school = school;
-		this.department = department;
-		this.course = course;
+	public CourseCoordinator(String rmitID, String type, String firstName, String lastName, String password, String school,
+			String phone, String workingHours) {
+		super(rmitID, type, firstName, lastName, password, school, phone, workingHours);
 	}
+	
+	
 
 	public String getSchool() {
 		return this.school;

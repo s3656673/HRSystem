@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Approver extends Staff{
 
-	public Approver(String name, String rmitID, String password, String school, int phone, int workingHours) {
-		super(name, rmitID, password, school, phone, workingHours);
-
+	public Approver(String rmitID, String type, String firstName, String lastName, String password, String school,
+			String phone, String workingHours) {
+		super(rmitID, type, firstName, lastName, password, school, phone, workingHours);
 	}
 
 	public int option = 0;

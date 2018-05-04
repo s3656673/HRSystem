@@ -1,15 +1,15 @@
 
 public abstract class Staff {
 
-	private String name, rmitID, password, school;
-	private int phone;
-	private int workingHours;
+	private String rmitID, type, firstName, lastName, password, school, phone, workingHours;
 
+	public Staff(String rmitID, String type, String firstName, String lastName, String password, String school,
+			String phone, String workingHours) {
 
-	
-	public Staff(String name, String rmitID, String password, String school, int phone, int workingHours) {
-		this.name = name;
 		this.rmitID = rmitID;
+		this.type = type;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.password = password;
 		this.school = school;
 		this.phone = phone;
@@ -17,31 +17,38 @@ public abstract class Staff {
 
 	}
 
-	public String getName() {
-		return this.name;
+	public String getRmitID() {
+		return rmitID;
 	}
 
-	public String getRmitID() {
-		return this.rmitID;
+	public String getType() {
+		return type;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
 	}
 
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
 	public String getSchool() {
-		return this.school;
+		return school;
 	}
 
-	public int getPhone() {
-		return this.phone;
+	public String getPhone() {
+		return phone;
 	}
 
-	public int getWorkingHours() {
-		return this.workingHours;
+	public String getWorkingHours() {
+		return workingHours;
 	}
 
 	public abstract void menu();
-
 
 }
