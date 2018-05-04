@@ -1,45 +1,25 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Scanner;
 
 public class CourseCoordinator extends Staff {
 
-
-	private String school, department, course;
-	
-
-
-	// Private assignShift()??
-	// String name, String rmitID, String password, String school, int phone, int
-	// workingHours
-	public CourseCoordinator(String rmitID, String type, String firstName, String lastName, String password, String school,
-			String phone, String workingHours) {
+	public CourseCoordinator(String rmitID, String type, String firstName, String lastName, String password,
+			String school, String phone, String workingHours) {
 		super(rmitID, type, firstName, lastName, password, school, phone, workingHours);
 	}
-	
-	
 
-	public String getSchool() {
-		return this.school;
-	}
-
-	public String getDepartment() {
-		return this.department;
-	}
-
-	public String getCourse() {
-		return this.course;
-	}
+	/*
+	 * public String getSchool() { return this.school; }
+	 * 
+	 * public String getDepartment() { return this.department; }
+	 * 
+	 * public String getCourse() { return this.course; }
+	 */
 
 	public int option = 0;
 
 	@Override
 	public void menu() {
 		Scanner scan = new Scanner(System.in);
-		int availableHrs;
-		scan = new Scanner(System.in);
 
 		do {
 
@@ -61,15 +41,11 @@ public class CourseCoordinator extends Staff {
 		}
 
 		if (option == 3) {
+			//scan.close();
 			CreateCourse createCourse = new CreateCourse();
 			createCourse.createCourse();
 			createCourse.defineTimetable();
-			DatabaseHandler db = new DatabaseHandler();
-			
-			
-			
-			
-			
+
 		}
 
 	}
