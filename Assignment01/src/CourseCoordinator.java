@@ -41,7 +41,6 @@ public class CourseCoordinator extends Staff {
 		}
 
 		if (option == 3) {
-			//scan.close();
 			CreateCourse createCourse = new CreateCourse();
 			createCourse.createCourse();
 			createCourse.defineTimetable();

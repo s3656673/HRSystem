@@ -4,7 +4,7 @@ public class CreateCourse {
 
 
 	// Declare variables for creating a course
-	private String courseName, courseDescription, courseDate;
+	private String courseName, courseDescription;
 	private String courseID;
 	private int noOfStudents;
 
@@ -24,8 +24,6 @@ public class CreateCourse {
 		courseID = scan.nextLine();
 		System.out.print("Enter description for course: ");
 		courseDescription = scan.nextLine();
-		System.out.print("Enter date for course: ");
-		courseDate = scan.nextLine();
 		System.out.print("Enter number of students for course: ");
 		noOfStudents = scan.nextInt();
 
