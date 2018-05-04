@@ -6,17 +6,6 @@ import java.util.Scanner;
 
 public class Timetable {
 
-	// RETRIEVE FROM SERVER
-	/*
-	 * Connection database = db.getConnection(); try { Statement statement =
-	 * database.createStatement(); String sql = "insert into course" +
-	 * "  (courseID, Name, Description, noOfStudents)" // +
-	 * " values ('2', 'SEF', 'Software Engineering', '240')"; + " values ('" +
-	 * this.courseID + "', " + "'" + this.name + "', " + "'" + this.description +
-	 * "', " + "'" + this.noOfStudents + "')"; statement.executeUpdate(sql);
-	 * 
-	 * } catch (SQLException e) { e.printStackTrace(); }
-	 */
 	private static final String ID = "2";
 	private String date, time, courseID, rmitID;
 
@@ -48,7 +37,7 @@ public class Timetable {
 		System.out.print("Please enter time: ");
 		time = scan.nextLine();
 
-		insertTable();
+		viewTimetable();
 
 	}
 
@@ -62,6 +51,30 @@ public class Timetable {
 					+ this.courseID + "'," + "'" + this.rmitID + "'," + "'" + this.date + "'," + "'" + this.time + "')";
 
 			statement.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void viewTimetable() {
+		DatabaseHandler db = new DatabaseHandler();
+		Connection database = db.getConnection();
+		try {
+			Statement statement = database.createStatement();
+
+			String sql = "SELECT timetable.ID, course.Name, staff.FirstName, staff.Lastname, timetable.date, timetable.time"
+					+ " FROM timetable" + " INNER JOIN course on course.courseID=timetable.courseID"
+					+ " INNER JOIN staff on staff.rmitID=timetable.rmitID";
+
+			ResultSet rs = statement.executeQuery(sql);
+			System.out.println("Current timetable: ");
+			while (rs.next())
+
+				System.out.println("ID: " + rs.getString("ID") + " " + "FirstName: " + rs.getString("FirstName") + " "
+						+ "LastName: " + rs.getString("LastName") + " " + "Date: " + rs.getString("Date") + " "
+						+ "Time:" + rs.getString("time"));
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

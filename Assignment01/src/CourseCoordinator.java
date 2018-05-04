@@ -24,7 +24,7 @@ public class CourseCoordinator extends Staff {
 		do {
 
 			System.out.println("Welcome course coordinator!");
-			System.out.println("1. Assign casual staff");
+			System.out.println("1. Modify staff timetable");
 			System.out.println("2. Input Rates");
 			System.out.println("3. Create course");
 			System.out.println();
@@ -33,7 +33,8 @@ public class CourseCoordinator extends Staff {
 		} while (option < 0 || option > 3);
 
 		if (option == 1) {
-			System.out.println("Enter staff to associate: ");
+			Timetable timetable = new Timetable();
+			timetable.createTimetable();
 		}
 
 		if (option == 2) {
@@ -41,11 +42,10 @@ public class CourseCoordinator extends Staff {
 		}
 
 		if (option == 3) {
-			/*CreateCourse createCourse = new CreateCourse();
-			createCourse.createCourse();*/
-			Timetable timetable = new Timetable();
-			timetable.createTimetable();
-			
+
+			CreateCourse createCourse = new CreateCourse();
+			createCourse.createCourse();
+
 		}
 
 	}
