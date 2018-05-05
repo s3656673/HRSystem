@@ -28,8 +28,11 @@ public class Timetable {
 			courseID = scan.next();
 			viewTimetable(courseID);
 		}
-		if (option == 3)
-			System.out.println("Currently under construction.");
+		if (option == 3) {
+			System.out.println("Please enter the courseID you wish to modify: ");
+			courseID = scan.next();
+			updateTimetable(courseID);
+		}
 	}
 
 	public void getCourses() {
@@ -100,6 +103,59 @@ public class Timetable {
 						+ "LastName: " + rs.getString("LastName") + " " + "Date: " + rs.getString("Date") + " "
 						+ "Time:" + rs.getString("time"));
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void updateTimetable(String courseID) {
+		DatabaseHandler db = new DatabaseHandler();
+		Connection database = db.getConnection();
+		String sql = "";
+
+		int option = -1;
+		int ID;
+		String newCourseID, newStaffID, newDate, newTime;
+		Scanner scan = new Scanner(System.in);
+		viewTimetable(courseID);
+		System.out.println();
+		System.out.print("Please enter the ID for the timetable you wish to update: ");
+		ID = scan.nextInt();
+		System.out.println("What would you like to update for timetable " + ID);
+		System.out.println("1. Update Course");
+		System.out.println("2. Update Staff");
+		System.out.println("3. Update date");
+		System.out.println("4. Update time");
+		option = scan.nextInt();
+
+		if (option == 1) {
+			System.out.print("Please enter new courseID: ");
+			newCourseID = scan.next();
+			sql = "UPDATE timetable\r\n" + "SET courseID = '" + newCourseID + "'" + "\r\n" + "WHERE ID = " + ID;
+		}
+
+		if (option == 2) {
+			System.out.print("Please enter new staff ID: ");
+			newStaffID = scan.next();
+			sql = "UPDATE timetable\r\n" + "SET rmitID = '" + newStaffID + "'" + "\r\n" + "WHERE ID = " + ID;
+		}
+
+		if (option == 3) {
+			System.out.print("Please enter new date: ");
+			newDate = scan.next();
+			sql = "UPDATE timetable\r\n" + "SET date = '" + newDate + "'" + "\r\n" + "WHERE ID = " + ID;
+		}
+
+		if (option == 4) {
+			System.out.println("Please enter new time: ");
+			newTime = scan.next();
+			sql = "UPDATE timetable\r\n" + "SET time = '" + newTime + "'" + "\r\n" + "WHERE ID = " + ID;
+		}
+
+		try {
+			Statement statement = database.createStatement();
+			statement.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
