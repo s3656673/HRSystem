@@ -25,7 +25,7 @@ public class CourseCoordinator extends Staff {
 
 			System.out.println("Welcome course coordinator!");
 			System.out.println("1. View and modify timetable");
-			System.out.println("2. Input Rates");
+			System.out.println("2. View and modify hours and rates");
 			System.out.println("3. Create course");
 			System.out.println();
 			System.out.println("Please select an option: ");
@@ -38,7 +38,8 @@ public class CourseCoordinator extends Staff {
 		}
 
 		if (option == 2) {
-			System.out.println("Input rates: ");
+			Rates rates = new Rates();
+			rates.options();
 		}
 
 		if (option == 3) {
