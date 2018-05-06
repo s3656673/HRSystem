@@ -12,14 +12,13 @@ public class CasualWorker extends Staff {
 	@Override
 	public void menu() {
 		int option;
-		int availableHrs;
 		Scanner scan = new Scanner(System.in);
 		
 		do {
 
 			System.out.println("Welcome casual worker!");
-			System.out.println("1. State available hours");
-			System.out.println("2. See open hours");
+			System.out.println("1. View available hours");
+			System.out.println("2. State Available Hours");
 			System.out.println("3. Apply for a course");
 			System.out.println();
 			System.out.println("Please select an option: ");
@@ -28,7 +27,12 @@ public class CasualWorker extends Staff {
 
 		if (option == 1)
 		{
-			System.out.println("Please enter available hours: ");
+			String courseID = null;
+			System.out.println("Please enter courseID to apply for: ");
+			courseID = scan.next();
+			Availability availability = new Availability(courseID);
+			
+			availability.showAvailability(courseID);
 			
 		}
 

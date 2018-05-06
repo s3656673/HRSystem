@@ -34,6 +34,12 @@ public class HRSystem {
 
 			courseCoordinator.menu();
 		}
+		
+		if (typeOfStaff.equals("casualWorker")) {
+			Staff casualWorker = new CasualWorker(rmitID, typeOfStaff, firstName, lastName, password, school, phone, workingHours);
+			
+			casualWorker.menu();
+		}
 
 	}
 
