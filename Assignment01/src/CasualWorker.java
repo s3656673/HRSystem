@@ -38,7 +38,12 @@ public class CasualWorker extends Staff {
 		}
 
 		if (option == 2) {
-			System.out.println("Apply for a course");
+			String courseID = null;
+			System.out.println("Please enter courseID to apply for: ");
+			courseID = scan.next();
+			Availability availability = new Availability();
+
+			availability.apply(courseID, rmitID);
 		}
 		if (option == 3) {
 			Availability availability = new Availability();

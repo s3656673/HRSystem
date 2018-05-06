@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class Availability {
 
@@ -45,6 +46,28 @@ public class Availability {
 						+ rs.getString("time") + " Status: " + rs.getString("Status"));
 
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void apply(String courseID, String rmitID) {
+		Scanner scan = new Scanner(System.in);
+		int ID;
+		showAvailability(courseID);
+		System.out.println();
+		System.out.println("Please enter ID for course and time to apply for: ");
+		ID = scan.nextInt();
+		String sql = null;
+		DatabaseHandler db = new DatabaseHandler();
+		Connection database = db.getConnection();
+		sql = "INSERT INTO applied(ID, rmitID, timetableID, Status)" + " VALUES (1,'" + rmitID + "','" + ID
+				+ "','Pending')";
+
+		try {
+			Statement statement = database.createStatement();
+			statement.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
