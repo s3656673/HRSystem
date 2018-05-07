@@ -40,6 +40,12 @@ public class HRSystem {
 			
 			casualWorker.menu();
 		}
+		
+		if (typeOfStaff.equals("approver")){
+			Staff approver = new Approver(rmitID, typeOfStaff, firstName, lastName, password, school, phone, workingHours);
+			
+			approver.menu();
+		}
 
 	}
 
