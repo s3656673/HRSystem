@@ -23,8 +23,9 @@ public class Approver extends Staff {
 			System.out.println("Welcome approver!");
 			System.out.println("1. View applied courses");
 			System.out.println("2. Apply or decline a casual worker job.");
+			System.out.println("3. View budget allocation");
 			option = scan.nextInt();
-		} while (option <= 0 || option > 2);
+		} while (option <= 0 || option > 3);
 
 		if (option == 1) {
 			viewApplied();
@@ -32,6 +33,10 @@ public class Approver extends Staff {
 
 		if (option == 2) {
 			setStatus();
+		}
+
+		if (option == 3) {
+			viewBudget();
 		}
 
 	}
@@ -89,5 +94,14 @@ public class Approver extends Staff {
 			e.printStackTrace();
 		}
 
+	}
+
+	public void viewBudget() {
+		Scanner scan = new Scanner(System.in);
+		String courseID;
+		System.out.println("Please enter courseID to view budget: ");
+		courseID = scan.next();
+		Rates rates = new Rates();
+		rates.viewCourseRates(courseID);
 	}
 }

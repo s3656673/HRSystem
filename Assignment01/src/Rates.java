@@ -89,6 +89,28 @@ public class Rates {
 
 	}
 
+	public void viewCourseRates(String courseID) {
+		String sql = null;
+		DatabaseHandler db = new DatabaseHandler();
+		Connection database = db.getConnection();
+
+		System.out.println("Rates for: " + courseID);
+
+		try {
+			Statement statement = database.createStatement();
+			sql = "SELECT * FROM `rates` WHERE courseID = '" + courseID + "'";
+
+			ResultSet rs = statement.executeQuery(sql);
+			while (rs.next())
+				System.out.println("ID: " + rs.getString("ID") +
+						" CourseID: " + rs.getString("courseID") +
+						" Hours: " + rs.getString("hours") + 
+						" Rates: " + rs.getString("rates"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 	public void modifyRates(String rmitID) {
 		String newRMITID, newCourseID, newHours, newRates;
 		DatabaseHandler db = new DatabaseHandler();
