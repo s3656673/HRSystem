@@ -46,6 +46,12 @@ public class HRSystem {
 			
 			approver.menu();
 		}
+		
+		if (typeOfStaff.equals("admin")) {
+			Staff admin = new Admin(rmitID, typeOfStaff, firstName, lastName, password, school, phone, workingHours);
+			
+			admin.menu();
+		}
 
 	}
 
