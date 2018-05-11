@@ -42,9 +42,6 @@ public class Admin extends Staff {
 
 		if (option == 2) {
 			exportData();
-			/*
-			 * 1. Applied, Availability,Course,Rates,Staff,Timetable
-			 */
 		}
 		if (option == 3) {
 			this.option = 2;
@@ -71,19 +68,227 @@ public class Admin extends Staff {
 		} while (option < 0 || option > 6);
 
 		if (option == 1) {
-			// Export applied courses
+			HSSFWorkbook workbook = new HSSFWorkbook();
+			HSSFSheet sheet = workbook.createSheet("lawix10");
+			HSSFRow rowhead = sheet.createRow((short) 0);
+			rowhead.createCell((short) 0).setCellValue("ID");
+			rowhead.createCell((short) 1).setCellValue("rmitID");
+			rowhead.createCell((short) 2).setCellValue("timetableID");
+			rowhead.createCell((short) 3).setCellValue("Status");
+
+			int i = 1;
+			try {
+				sql = "select * from applied";
+				Statement statement = database.createStatement();
+				ResultSet rs = statement.executeQuery(sql);
+				System.out.println("Please enter filename: ");
+				filename = scan.next();
+				while (rs.next()) {
+					HSSFRow row = sheet.createRow((short) i);
+
+					row.createCell((short) 0).setCellValue(Integer.toString(rs.getInt("ID")));
+					row.createCell((short) 1).setCellValue(rs.getString("rmitID"));
+					row.createCell((short) 2).setCellValue(rs.getString("timetableID"));
+					row.createCell((short) 3).setCellValue(rs.getString("Status"));
+
+					i++;
+				}
+
+				String yemi = "C:\\Users\\Jonathan Ciminelli\\Desktop\\Software Engineering Fundamentals\\" + filename
+						+ ".xls";
+				FileOutputStream fileOut;
+				try {
+					fileOut = new FileOutputStream(yemi);
+					workbook.write(fileOut);
+					System.out.println("Applied successfully exported");
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		if (option == 2) {
-			// Export availability times
+			HSSFWorkbook workbook = new HSSFWorkbook();
+			HSSFSheet sheet = workbook.createSheet("lawix10");
+			HSSFRow rowhead = sheet.createRow((short) 0);
+			rowhead.createCell((short) 0).setCellValue("ID");
+			rowhead.createCell((short) 1).setCellValue("Status");
+
+			int i = 1;
+			try {
+				sql = "select * from availability";
+				Statement statement = database.createStatement();
+				ResultSet rs = statement.executeQuery(sql);
+				System.out.println("Please enter filename: ");
+				filename = scan.next();
+				while (rs.next()) {
+					HSSFRow row = sheet.createRow((short) i);
+
+					row.createCell((short) 0).setCellValue(Integer.toString(rs.getInt("ID")));
+					row.createCell((short) 1).setCellValue(rs.getString("Status"));
+
+					i++;
+				}
+
+				String yemi = "C:\\Users\\Jonathan Ciminelli\\Desktop\\Software Engineering Fundamentals\\" + filename
+						+ ".xls";
+				FileOutputStream fileOut;
+				try {
+					fileOut = new FileOutputStream(yemi);
+					workbook.write(fileOut);
+					System.out.println("Availability successfully exported");
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		if (option == 3) {
-			// Export course details
+			HSSFWorkbook workbook = new HSSFWorkbook();
+			HSSFSheet sheet = workbook.createSheet("lawix10");
+			HSSFRow rowhead = sheet.createRow((short) 0);
+			rowhead.createCell((short) 0).setCellValue("courseID");
+			rowhead.createCell((short) 1).setCellValue("name");
+			rowhead.createCell((short) 2).setCellValue("description");
+			rowhead.createCell((short) 3).setCellValue("noOfStudents");
+
+			int i = 1;
+			try {
+				sql = "select * from course";
+				Statement statement = database.createStatement();
+				ResultSet rs = statement.executeQuery(sql);
+				System.out.println("Please enter filename: ");
+				filename = scan.next();
+				while (rs.next()) {
+					HSSFRow row = sheet.createRow((short) i);
+
+					row.createCell((short) 0).setCellValue(rs.getString("courseID"));
+					row.createCell((short) 1).setCellValue(rs.getString("name"));
+					row.createCell((short) 2).setCellValue(rs.getString("description"));
+					row.createCell((short) 3).setCellValue(rs.getString("noOfStudents"));
+
+					i++;
+				}
+
+				String yemi = "C:\\Users\\Jonathan Ciminelli\\Desktop\\Software Engineering Fundamentals\\" + filename
+						+ ".xls";
+				FileOutputStream fileOut;
+				try {
+					fileOut = new FileOutputStream(yemi);
+					workbook.write(fileOut);
+					System.out.println("Course successfully exported");
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		if (option == 4) {
-			// Export rates
+			HSSFWorkbook workbook = new HSSFWorkbook();
+			HSSFSheet sheet = workbook.createSheet("lawix10");
+			HSSFRow rowhead = sheet.createRow((short) 0);
+			rowhead.createCell((short) 0).setCellValue("ID");
+			rowhead.createCell((short) 1).setCellValue("rmitID");
+			rowhead.createCell((short) 2).setCellValue("courseID");
+			rowhead.createCell((short) 3).setCellValue("hours");
+			rowhead.createCell((short) 4).setCellValue("rates");
+
+			int i = 1;
+			try {
+				sql = "select * from rates";
+				Statement statement = database.createStatement();
+				ResultSet rs = statement.executeQuery(sql);
+				System.out.println("Please enter filename: ");
+				filename = scan.next();
+				while (rs.next()) {
+					HSSFRow row = sheet.createRow((short) i);
+
+					row.createCell((short) 0).setCellValue(Integer.toString(rs.getInt("ID")));
+					row.createCell((short) 1).setCellValue(rs.getString("rmitID"));
+					row.createCell((short) 2).setCellValue(rs.getString("courseID"));
+					row.createCell((short) 3).setCellValue(rs.getString("hours"));
+					row.createCell((short) 4).setCellValue(rs.getString("rates"));
+
+					i++;
+				}
+
+				String yemi = "C:\\Users\\Jonathan Ciminelli\\Desktop\\Software Engineering Fundamentals\\" + filename
+						+ ".xls";
+				FileOutputStream fileOut;
+				try {
+					fileOut = new FileOutputStream(yemi);
+					workbook.write(fileOut);
+					System.out.println("Rates successfully exported");
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		if (option == 5) {
-			// Export staff details
+			HSSFWorkbook workbook = new HSSFWorkbook();
+			HSSFSheet sheet = workbook.createSheet("lawix10");
+			HSSFRow rowhead = sheet.createRow((short) 0);
+			rowhead.createCell((short) 0).setCellValue("ID");
+			rowhead.createCell((short) 1).setCellValue("courseID");
+			rowhead.createCell((short) 2).setCellValue("rmitID");
+			rowhead.createCell((short) 3).setCellValue("time");
+			rowhead.createCell((short) 4).setCellValue("date");
+			rowhead.createCell((short) 5).setCellValue("phone");
+
+			int i = 1;
+			try {
+				sql = "select rmitID, Type, FirstName, LastName, School, Phone, workingHours\r\n" + "from staff;";
+				Statement statement = database.createStatement();
+				ResultSet rs = statement.executeQuery(sql);
+				System.out.println("Please enter filename: ");
+				filename = scan.next();
+				while (rs.next()) {
+					HSSFRow row = sheet.createRow((short) i);
+
+					row.createCell((short) 0).setCellValue(rs.getString("rmitID"));
+					row.createCell((short) 1).setCellValue(rs.getString("Type"));
+					row.createCell((short) 2).setCellValue(rs.getString("FirstName"));
+					row.createCell((short) 3).setCellValue(rs.getString("LastName"));
+					row.createCell((short) 4).setCellValue(rs.getString("School"));
+					row.createCell((short) 5).setCellValue(rs.getString("Phone"));
+					row.createCell((short) 6).setCellValue(rs.getString("workingHours"));
+
+					i++;
+				}
+
+				String yemi = "C:\\Users\\Jonathan Ciminelli\\Desktop\\Software Engineering Fundamentals\\" + filename
+						+ ".xls";
+				FileOutputStream fileOut;
+				try {
+					fileOut = new FileOutputStream(yemi);
+					workbook.write(fileOut);
+					System.out.println("Staff successfully exported");
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		if (option == 6) {
 			HSSFWorkbook workbook = new HSSFWorkbook();
