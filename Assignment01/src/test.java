@@ -7,8 +7,8 @@ class test {
 
 	@Test
 	// Test viewing timetable
-	// This test is expected to pass as there is a record for ISYS1118 in the
-	// database.
+	/* This test is expected to pass as there is a record for ISYS1118 in the database.
+	*/
 	void testTimetable() {
 		Timetable timetable = new Timetable();
 		String result = timetable.viewTimetable("ISYS1118");
