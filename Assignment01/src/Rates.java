@@ -41,11 +41,12 @@ public class Rates {
 
 	}
 
-	public void inputRates() {
+	public String inputRates() {
 		Scanner scan = new Scanner(System.in);
 		String sql = null;
 		DatabaseHandler db = new DatabaseHandler();
 		Connection database = db.getConnection();
+		String result = null;
 
 		System.out.print("Please enter course ID: ");
 		courseID = scan.next();
@@ -55,6 +56,8 @@ public class Rates {
 		hours = scan.next();
 		System.out.print("Please enter hourly rate: ");
 		rates = scan.next();
+		
+		
 
 		sql = "INSERT INTO `rates`(`ID`, `rmitID`, `courseID`, `hours`, `rates`)\r\n" + "VALUES(1,'" + rmitID + "',"
 				+ "'" + courseID + "'," + "'" + hours + "'," + "'" + rates + "')";
@@ -62,10 +65,13 @@ public class Rates {
 		try {
 			Statement statement = database.createStatement();
 			statement.executeUpdate(sql);
+			result = "Data imported successfully";
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
+		
+		return result;
 	}
 
 	public void viewRates(String rmitID) {

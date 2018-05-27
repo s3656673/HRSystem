@@ -27,7 +27,8 @@ public class Availability {
 		}
 	}
 
-	public void checkStatus(String staffID) {
+	public String checkStatus(String staffID) {
+		String result = null;
 		String sql = null;
 		DatabaseHandler db = new DatabaseHandler();
 		Connection database = db.getConnection();
@@ -42,17 +43,24 @@ public class Availability {
 			Statement statement = database.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
-				System.out.print("CourseID: " + rs.getString("courseID") + " Date: " + rs.getString("date") + " Time: "
+			
+				
+				result = ("CourseID: " + rs.getString("courseID") + " Date: " + rs.getString("date") + " Time: "
 						+ rs.getString("time") + " Status: " + rs.getString("Status"));
+				
+				System.out.println(result);
 
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		return result;
+		
 
 	}
 
-	public void apply(String courseID, String rmitID) {
+	public boolean apply(String courseID, String rmitID) {
 		Scanner scan = new Scanner(System.in);
 		int ID;
 		showAvailability(courseID);
@@ -64,13 +72,19 @@ public class Availability {
 		Connection database = db.getConnection();
 		sql = "INSERT INTO applied(ID, rmitID, timetableID, Status)" + " VALUES (1,'" + rmitID + "','" + ID
 				+ "','Pending')";
+		
+		
 
 		try {
 			Statement statement = database.createStatement();
 			statement.executeUpdate(sql);
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 
 	}
+	
+	
 }

@@ -83,9 +83,10 @@ public class Timetable {
 
 	}
 
-	public void viewTimetable(String courseID) {
+	public String viewTimetable(String courseID) {
 		DatabaseHandler db = new DatabaseHandler();
 		Connection database = db.getConnection();
+		String result = null;
 		try {
 			Statement statement = database.createStatement();
 
@@ -99,14 +100,18 @@ public class Timetable {
 			System.out.println("Current timetable for " + courseID);
 			while (rs.next())
 
-				System.out.println("ID: " + rs.getString("ID") + " " + "FirstName: " + rs.getString("FirstName") + " "
+				result = ("ID: " + rs.getString("ID") + " " + "FirstName: " + rs.getString("FirstName") + " "
 						+ "LastName: " + rs.getString("LastName") + " " + "Date: " + rs.getString("Date") + " "
 						+ "Time:" + rs.getString("time"));
+				/*System.out.println("ID: " + rs.getString("ID") + " " + "FirstName: " + rs.getString("FirstName") + " "
+						+ "LastName: " + rs.getString("LastName") + " " + "Date: " + rs.getString("Date") + " "
+						+ "Time:" + rs.getString("time"));*/
+			System.out.println(result);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		return result;
 	}
 
 	public void updateTimetable(String courseID) {

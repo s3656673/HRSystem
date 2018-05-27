@@ -9,7 +9,7 @@ public class Login {
 	private String name, firstName, lastName, rmitID, password, school, phone, workingHours;
 	DatabaseHandler db = new DatabaseHandler();
 
-	public Login() {
+	public boolean Login() {
 		Scanner scan = new Scanner(System.in);
 		String username;
 		String password;
@@ -33,11 +33,15 @@ public class Login {
 				this.school = rs.getString("School");
 				this.phone = rs.getString("Phone");
 				this.workingHours = rs.getString("WorkingHours");
+				
+				return true;
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
+		return false;
 
 	}
 
